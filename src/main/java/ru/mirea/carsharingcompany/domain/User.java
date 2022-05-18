@@ -29,6 +29,18 @@ public class User implements UserDetails {
     private Long orderId;
     private int wallet;
 
+    public User(String username, String email, String phone, int wallet){
+        super();
+        this.username = username;
+        this.email = email;
+        this.phone = phone;
+        this.wallet = wallet;
+    }
+
+    public User(){
+        
+    }
+
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "roles")

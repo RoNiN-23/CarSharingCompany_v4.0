@@ -5,9 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.mirea.carsharingcompany.domain.Car;
 import ru.mirea.carsharingcompany.domain.Order;
 import ru.mirea.carsharingcompany.domain.OrderForm;
@@ -15,8 +13,9 @@ import ru.mirea.carsharingcompany.domain.User;
 import ru.mirea.carsharingcompany.repo.CarRepo;
 import ru.mirea.carsharingcompany.repo.OrderRepo;
 import ru.mirea.carsharingcompany.repo.UserRepo;
-
 import java.util.Date;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/")
@@ -81,6 +80,8 @@ public class MainController {
         userRepo.save(user);
         return "redirect:/user";
     }
+
+
 
     @PreAuthorize(value = "hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/user")
